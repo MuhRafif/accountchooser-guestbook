@@ -1,5 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.util.List" %>
+<%@ page import="com.google.appengine.api.users.User" %>
+<%@ page import="com.google.appengine.api.users.UserService" %>
+<%@ page import="com.google.appengine.api.users.UserServiceFactory" %>
 <%@ page import="com.google.appengine.api.datastore.DatastoreServiceFactory" %>
 <%@ page import="com.google.appengine.api.datastore.DatastoreService" %>
 <%@ page import="com.google.appengine.api.datastore.Query" %>
@@ -7,8 +10,6 @@
 <%@ page import="com.google.appengine.api.datastore.FetchOptions" %>
 <%@ page import="com.google.appengine.api.datastore.Key" %>
 <%@ page import="com.google.appengine.api.datastore.KeyFactory" %>
-<%@ page import="guestbook.UserServlet" %>
-<%@ page import="javax.servlet.http.HttpSession" %>
 
 <html>
   <head>
@@ -18,22 +19,34 @@
   <body>
 
 <%
-	String guestbookName = request.getParameter("guestbookName");
+    String guestbookName = request.getParameter("guestbookName");
     if (guestbookName == null) {
         guestbookName = "default";
     }
+<<<<<<< HEAD
 
 	if (session.getAttribute("user_id") != null) { 
+=======
+    UserService userService = UserServiceFactory.getUserService();
+    User user = userService.getCurrentUser();
+    if (user != null) {
+>>>>>>> parent of f00c73b... Updated Guestbook to include a very simple home-grown user managment
 %>
-<p>Hello, <%= UserServlet.getUserIdentifier(session) %>! (You can <a href="/signout">sign out</a>.)</p>
-<br/>
+<p>Hello, <%= user.getNickname() %>! (You can
+<a href="<%= userService.createLogoutURL(request.getRequestURI()) %>">sign out</a>.)</p>
 <%
     } else {
 %>
+<<<<<<< HEAD
 <p>Hello. This is the AccountChooser Guestbook java sample application. 
 </p>
 <p>Once you <a href="/account-login.jsp">sign in</a> 
    you can include your name and photo with greetings you post.</p>
+=======
+<p>Hello!
+<a href="<%= userService.createLoginURL(request.getRequestURI()) %>">Sign in</a>
+to include your name with greetings you post.</p>
+>>>>>>> parent of f00c73b... Updated Guestbook to include a very simple home-grown user managment
 <%
     }
 %>
@@ -47,13 +60,15 @@
     if (greetings.isEmpty()) {
         %>
         <p>Guestbook '<%= guestbookName %>' has no messages.</p>
-
         <%
     } else {
         %>
         <p>Messages in Guestbook '<%= guestbookName %>'.</p>
+<<<<<<< HEAD
         <table border="1"><tr><td>
         
+=======
+>>>>>>> parent of f00c73b... Updated Guestbook to include a very simple home-grown user managment
         <%
         for (Entity greeting : greetings) {
             if (greeting.getProperty("user") == null) {
@@ -62,8 +77,12 @@
                 <%
             } else {
                 %>
+<<<<<<< HEAD
                 <p><%= UserServlet.getPhotoTag((String) greeting.getProperty("photo")) %>
                 <b><%= greeting.getProperty("user") %></b> wrote:</p>
+=======
+                <p><b><%= ((User) greeting.getProperty("user")).getNickname() %></b> wrote:</p>
+>>>>>>> parent of f00c73b... Updated Guestbook to include a very simple home-grown user managment
                 <%
             }
             %>
