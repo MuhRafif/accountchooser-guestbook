@@ -26,4 +26,3 @@ jsp filter=lfs diff=lfs merge=lfs -text
 css filter=lfs diff=lfs merge=lfs -text
 jar filter=lfs diff=lfs merge=lfs -text
 Guestbook filter=lfs diff=lfs merge=lfs -text
-4d8b56827cb208ef7ad466a9a0ea2e8c56f3e9a8 filter=lfs diff=lfs merge=lfs -text
