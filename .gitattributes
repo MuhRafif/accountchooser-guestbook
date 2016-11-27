@@ -21,3 +21,4 @@ CONTRIBUTING filter=lfs diff=lfs merge=lfs -text
 README filter=lfs diff=lfs merge=lfs -text
 html filter=lfs diff=lfs merge=lfs -text
 build.xml filter=lfs diff=lfs merge=lfs -text
+WEB-INF filter=lfs diff=lfs merge=lfs -text
