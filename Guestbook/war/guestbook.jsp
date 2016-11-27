@@ -24,8 +24,14 @@
         guestbookName = "default";
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	if (session.getAttribute("user_id") != null) { 
+=======
+    UserService userService = UserServiceFactory.getUserService();
+    User user = userService.getCurrentUser();
+    if (user != null) {
+>>>>>>> parent of f00c73b... Updated Guestbook to include a very simple home-grown user managment
 =======
     UserService userService = UserServiceFactory.getUserService();
     User user = userService.getCurrentUser();
@@ -46,6 +52,9 @@
 <p>Hello!
 <a href="<%= userService.createLoginURL(request.getRequestURI()) %>">Sign in</a>
 to include your name with greetings you post.</p>
+<<<<<<< HEAD
+>>>>>>> parent of f00c73b... Updated Guestbook to include a very simple home-grown user managment
+=======
 >>>>>>> parent of f00c73b... Updated Guestbook to include a very simple home-grown user managment
 <%
     }
@@ -65,8 +74,11 @@ to include your name with greetings you post.</p>
         %>
         <p>Messages in Guestbook '<%= guestbookName %>'.</p>
 <<<<<<< HEAD
+<<<<<<< HEAD
         <table border="1"><tr><td>
         
+=======
+>>>>>>> parent of f00c73b... Updated Guestbook to include a very simple home-grown user managment
 =======
 >>>>>>> parent of f00c73b... Updated Guestbook to include a very simple home-grown user managment
         <%
@@ -78,8 +90,12 @@ to include your name with greetings you post.</p>
             } else {
                 %>
 <<<<<<< HEAD
+<<<<<<< HEAD
                 <p><%= UserServlet.getPhotoTag((String) greeting.getProperty("photo")) %>
                 <b><%= greeting.getProperty("user") %></b> wrote:</p>
+=======
+                <p><b><%= ((User) greeting.getProperty("user")).getNickname() %></b> wrote:</p>
+>>>>>>> parent of f00c73b... Updated Guestbook to include a very simple home-grown user managment
 =======
                 <p><b><%= ((User) greeting.getProperty("user")).getNickname() %></b> wrote:</p>
 >>>>>>> parent of f00c73b... Updated Guestbook to include a very simple home-grown user managment
